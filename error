@@ -1,0 +1,9 @@
+uv add libcamera
+  × No solution found when resolving dependencies for split (python_full_version >= '3.13' and
+  │ sys_platform == 'darwin'):
+  ╰─▶ Because libcamera was not found in the package registry and camera depends on libcamera, we can
+      conclude that camera's requirements are unsatisfiable.
+      And because your workspace requires camera, we can conclude that your workspace's requirements
+      are unsatisfiable.
+  help: If you want to add the package regardless of the failed resolution, provide the `--frozen` flag
+        to skip locking and syncing.
