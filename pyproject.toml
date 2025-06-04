@@ -1,5 +1,5 @@
 [project]
-name = "rpi-ai-camera"
+name = "deepcare-camera"
 version = "0.1.0"
 description = "Raspberry Pi AI Camera Project"
 requires-python = ">=3.11"
@@ -7,10 +7,14 @@ dependencies = [
     "picamera2",
     "opencv-python",
     "numpy",
-    "pillow",
+    "Pillow",
     "tflite-runtime",
     "scipy",
+    "RPi.GPIO",
 ]
+
+[tool.uv]
+system-packages = true
 
 [project.optional-dependencies]
 dev = [
