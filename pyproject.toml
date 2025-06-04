@@ -13,19 +13,17 @@ dependencies = [
     "RPi.GPIO",
 ]
 
-[tool.uv]
-system-packages = true
-
 [project.optional-dependencies]
 dev = [
     "pytest",
     "black",
     "ruff",
 ]
-
-# rPPG 프로젝트를 위한 추가 패키지
 biometrics = [
     "scipy",
     "matplotlib",
     "pandas",
 ]
+
+[tool.uv]
+system-packages = true
