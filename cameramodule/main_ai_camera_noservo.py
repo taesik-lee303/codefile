@@ -155,7 +155,9 @@ class FaceTrackerWithAI:
                 minSize=(80, 80)
             )
             if len(faces) > 0:
-                return max(faces, key=lambda f: f[2] * f[3])
+                # 가장 큰 얼굴을 선택하고 tuple로 변환
+                largest_face = max(faces, key=lambda f: f[2] * f[3])
+                return tuple(largest_face)  # numpy array를 tuple로 변환
         
         return None
 
@@ -209,7 +211,8 @@ class FaceTrackerWithAI:
             # 얼굴 검출
             face_bbox = self.detect_face(frame)
             
-            if face_bbox:
+            # face_bbox가 None이 아니고 유효한 값인지 확인
+            if face_bbox is not None and len(face_bbox) == 4:
                 # rPPG 처리
                 if self.rppg_enabled:
                     self.rppg.process_frame(frame, face_bbox)
@@ -232,7 +235,7 @@ class FaceTrackerWithAI:
                         self.stress_buffer.append(stress)
             
             # 화면에 표시
-            frame = self.draw_overlay(frame, face_bbox)
+            frame = self.draw_overlay(frame, face_bbox if face_bbox is not None else None)
             self.draw_biometrics(frame)
             
             cv2.imshow("AI Camera", frame)
