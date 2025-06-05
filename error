@@ -1,19 +1,13 @@
-deeplabs@raspberrypi:~/DeepCare-Device/deepcare/src/camera $ python3 main_ai_camera.py
-Warning: servo_face_tracker module not found
-[0:36:30.610330412] [3238]  INFO Camera camera_manager.cpp:326 libcamera v0.5.0+59-d83ff0a4
-[0:36:30.617695187] [3244]  INFO RPI pisp.cpp:720 libpisp version v1.2.1 981977ff21f3 29-04-2025 (14:13:50)
-[0:36:30.627242223] [3244]  INFO RPI pisp.cpp:1179 Registered camera /base/axi/pcie@1000120000/rp1/i2c@88000/imx708@1a to CFE device /dev/media0 and ISP device /dev/media1 using PiSP variant BCM2712_D0
-[0:36:30.631636270] [3238]  INFO Camera camera.cpp:1205 configuring streams: (0) 640x480-RGB888 (1) 1536x864-BGGR_PISP_COMP1
-[0:36:30.631760973] [3244]  INFO RPI pisp.cpp:1483 Sensor: /base/axi/pcie@1000120000/rp1/i2c@88000/imx708@1a - Selected sensor format: 1536x864-SBGGR10_1X10 - Selected CFE format: 1536x864-PC1B
-[0:36:30.640321477] [3249]  WARN IPARPI ipa_base.cpp:1392 Ctrl AeEnable is not handled.
-AI Camera started: 640x480 @ 30fps
-Servo motors not available
-Error: PIDController() takes no arguments
+QStandardPaths: wrong permissions on runtime directory /run/user/1000, 0770 instead of 0700
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+Error: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
 Traceback (most recent call last):
-  File "/home/deeplabs/DeepCare-Device/deepcare/src/camera/main_ai_camera.py", line 601, in <module>
-    tracker = FaceTrackerWithAI()
-              ^^^^^^^^^^^^^^^^^^^
-  File "/home/deeplabs/DeepCare-Device/deepcare/src/camera/main_ai_camera.py", line 151, in __init__
-    self.pan_pid = PIDController(kp=0.08, ki=0.001, kd=0.002)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: PIDController() takes no arguments
+  File "/home/deeplabs/DeepCare-Device/deepcare/src/camera/main_ai_camera_noservo.py", line 260, in <module>
+    tracker.run()
+  File "/home/deeplabs/DeepCare-Device/deepcare/src/camera/main_ai_camera_noservo.py", line 212, in run
+    if face_bbox:
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
