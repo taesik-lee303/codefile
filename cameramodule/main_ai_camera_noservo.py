@@ -34,12 +34,23 @@ class AICamera:
             self.picam2 = Picamera2()
             config = self.picam2.create_preview_configuration(
                 main={"size": (self.width, self.height), "format": "RGB888"},
-                controls={"FrameRate": self.fps, "AeEnable": True, "AwbEnable": True, "NoiseReductionMode": 1}
+                controls={
+                    "FrameRate": self.fps, 
+                    "AeEnable": True, 
+                    "AwbEnable": True, 
+                    "AwbMode": 0,  # Auto white balance
+                    "NoiseReductionMode": 1,
+                    "Brightness": 0.0,
+                    "Contrast": 1.0,
+                    "Saturation": 1.0,
+                    "ExposureTime": 0,  # Auto exposure
+                    "AnalogueGain": 1.0
+                }
             )
             self.picam2.configure(config)
             self.picam2.start()
             self.started = True
-            time.sleep(2)
+            time.sleep(3)  # 카메라 안정화 시간 증가
             print(f"AI Camera started: {self.width}x{self.height} @ {self.fps}fps")
             return True
         except Exception as e:
