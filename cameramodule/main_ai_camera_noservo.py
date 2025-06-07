@@ -62,7 +62,7 @@ class AICamera:
             return False, None
         try:
             frame = self.picam2.capture_array()
-            return True, cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
+            return True, frame
         except:
             return False, None
 
