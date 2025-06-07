@@ -15,3 +15,38 @@ error: externally-managed-environment
 
 note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
 hint: See PEP 668 for the detailed specification.
+
+
+2025.06.07 camera error
+aisl@gateway-529:~/deepcare/sensors $ python3 rppg-test-code.py
+✓ rPPG modules found
+=== Starting Integrated Face Detection and rPPG Tests ===
+OpenCV version: 4.6.0
+
+=== Initializing Camera ===
+[2:13:27.207973520] [4857]  INFO Camera camera_manager.cpp:326 libcamera v0.5.0+59-d83ff0a4
+[2:13:27.215288019] [4863]  INFO RPI pisp.cpp:720 libpisp version v1.2.1 981977ff21f3 29-04-2025 (14:13:50)
+[2:13:27.225500028] [4863]  INFO RPI pisp.cpp:1179 Registered camera /base/axi/pcie@1000120000/rp1/i2c@80000/imx708@1a to CFE device /dev/media2 and ISP device /dev/media0 using PiSP variant BCM2712_D0
+[2:13:27.228712608] [4857]  INFO Camera camera.cpp:1205 configuring streams: (0) 640x480-XBGR8888 (1) 1536x864-BGGR_PISP_COMP1
+[2:13:27.228851257] [4863]  INFO RPI pisp.cpp:1483 Sensor: /base/axi/pcie@1000120000/rp1/i2c@80000/imx708@1a - Selected sensor format: 1536x864-SBGGR10_1X10 - Selected CFE format: 1536x864-PC1B
+[2:13:27.233031865] [4857]  INFO Camera camera.cpp:1205 configuring streams: (0) 640x480-XBGR8888 (1) 2304x1296-BGGR_PISP_COMP1
+[2:13:27.233171645] [4863]  INFO RPI pisp.cpp:1483 Sensor: /base/axi/pcie@1000120000/rp1/i2c@80000/imx708@1a - Selected sensor format: 2304x1296-SBGGR10_1X10 - Selected CFE format: 2304x1296-PC1B
+[2:13:27.239365795] [4857]  INFO Camera camera.cpp:1205 configuring streams: (0) 640x480-XBGR8888 (1) 4608x2592-BGGR_PISP_COMP1
+[2:13:27.239519764] [4863]  INFO RPI pisp.cpp:1483 Sensor: /base/axi/pcie@1000120000/rp1/i2c@80000/imx708@1a - Selected sensor format: 4608x2592-SBGGR10_1X10 - Selected CFE format: 4608x2592-PC1B
+Available camera modes: 3
+[2:13:27.251208796] [4857]  INFO Camera camera.cpp:1205 configuring streams: (0) 640x480-BGR888 (1) 1536x864-BGGR_PISP_COMP1
+[2:13:27.251338295] [4863]  INFO RPI pisp.cpp:1483 Sensor: /base/axi/pcie@1000120000/rp1/i2c@80000/imx708@1a - Selected sensor format: 1536x864-SBGGR10_1X10 - Selected CFE format: 1536x864-PC1B
+[2:13:27.255068703] [4870]  WARN IPARPI ipa_base.cpp:1392 Ctrl AeEnable is not handled.
+✓ Camera initialized successfully
+
+=== Initializing Face Detection ===
+
+=== Finding Haar Cascade file ===
+✗ Not found: /usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml
+✗ Not found: /usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml
+✗ Not found: /usr/local/share/opencv4/haarcascades/haarcascade_frontalface_default.xml
+✗ Not found: /usr/lib/python3/dist-packages/cv2/data/haarcascade_frontalface_default.xml
+✗ Not found: ./haarcascade_frontalface_default.xml
+✗ No cascade file found!
+Cannot proceed without face detection
+aisl@gateway-529:~/deepcare/sensors $ 
