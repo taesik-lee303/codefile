@@ -30,6 +30,11 @@ class TestFaceDetectionAndRPPG:
     def find_cascade_file(self):
         """Haar Cascade 파일 찾기"""
         print("\n=== Finding Haar Cascade file ===")
+        current_dir_path = './haarcascade_frontalface_default.xml'
+        if os.path.exists(current_dir_path):
+            print(f"✓ Found cascade file in current directory: {current_dir_path}")
+            return current_dir_path
+            
         cascade_paths = [
             '/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml',
             '/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml',
