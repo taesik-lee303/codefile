@@ -68,17 +68,20 @@ AVERAGE_INTERVAL = 5.0  # 5초 평균
 class DHTSensor:
     def __init__(self):
         self.dht_device = None
+        self.is_pi = IS_RASPBERRY_PI  # 클래스 변수로 복사
+        self.dht_lib = DHT_LIB
+        self.dht_available = DHT_AVAILABLE
         
         # DHT 센서 초기화
-        if IS_RASPBERRY_PI and DHT_AVAILABLE:
+        if self.is_pi and self.dht_available:
             try:
-                if DHT_LIB == "adafruit_dht":
+                if self.dht_lib == "adafruit_dht":
                     # 라즈베리파이 5용 새로운 라이브러리
                     self.dht_device = adafruit_dht.DHT22(getattr(board, f'D{DHT_PIN}'))
                     self.sensor_mode = "real_new"
                     print(f"✓ adafruit_dht로 DHT22 센서 초기화 완료 (GPIO {DHT_PIN})")
                     
-                elif DHT_LIB == "Adafruit_DHT":
+                elif self.dht_lib == "Adafruit_DHT":
                     # 기존 라이브러리
                     self.DHT_TYPE = Adafruit_DHT.DHT22
                     self.sensor_mode = "real_old"
@@ -162,7 +165,7 @@ class DHTSensor:
     
     def calculate_and_send_average(self):
         """5초 평균 계산 및 MQTT 전송"""
-        mode_text = f" ({DHT_LIB})" if self.sensor_mode.startswith("real") else " (Mock)"
+        mode_text = f" ({self.dht_lib})" if self.sensor_mode.startswith("real") else " (Mock)"
         
         # 온도 평균 계산 및 전송
         if self.temp_buffer:
@@ -176,7 +179,7 @@ class DHTSensor:
                 "unit": "°C",
                 "samples": len(self.temp_buffer),
                 "device_mode": self.sensor_mode,
-                "dht_lib": DHT_LIB if DHT_AVAILABLE else "none"
+                "dht_lib": self.dht_lib if self.dht_available else "none"
             }
             
             # MQTT로 전송
@@ -197,7 +200,7 @@ class DHTSensor:
                 "unit": "%",
                 "samples": len(self.humidity_buffer),
                 "device_mode": self.sensor_mode,
-                "dht_lib": DHT_LIB if DHT_AVAILABLE else "none"
+                "dht_lib": self.dht_lib if self.dht_available else "none"
             }
             
             # MQTT로 전송

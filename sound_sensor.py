@@ -46,11 +46,13 @@ class SoundSensor:
     def __init__(self):
         self.chip = None
         self.line = None
+        self.is_pi = IS_RASPBERRY_PI  # 클래스 변수로 복사
+        self.gpio_lib = GPIO_LIB
         
         # GPIO 초기화
-        if IS_RASPBERRY_PI:
+        if self.is_pi:
             try:
-                if GPIO_LIB == "gpiod":
+                if self.gpio_lib == "gpiod":
                     # gpiod 초기화 (라즈베리파이 5)
                     try:
                         self.chip = gpiod.Chip('gpiochip4')  # 라즈베리파이 5
@@ -61,7 +63,7 @@ class SoundSensor:
                     self.line.request(consumer="sound_sensor", type=gpiod.LINE_REQ_DIR_IN)
                     print(f"✓ gpiod로 소음 센서 초기화 완료 (GPIO {SOUND_PIN})")
                     
-                elif GPIO_LIB == "RPi.GPIO":
+                elif self.gpio_lib == "RPi.GPIO":
                     # RPi.GPIO 초기화
                     GPIO.setmode(GPIO.BCM)
                     GPIO.setup(SOUND_PIN, GPIO.IN)
@@ -70,8 +72,7 @@ class SoundSensor:
             except Exception as e:
                 print(f"✗ GPIO 초기화 실패: {e}")
                 print("⚠️ Mock 모드로 전환합니다.")
-                global IS_RASPBERRY_PI
-                IS_RASPBERRY_PI = False
+                self.is_pi = False
                 if self.chip:
                     self.chip.close()
         else:
@@ -98,15 +99,15 @@ class SoundSensor:
     
     def read_sensor(self):
         """소음 센서 값 읽기"""
-        if not IS_RASPBERRY_PI:
+        if not self.is_pi:
             # Mock 데이터: 랜덤 소음 시뮬레이션
             import random
             return random.choice([0, 0, 0, 0, 1])  # 20% 확률로 소음 감지
             
         try:
-            if GPIO_LIB == "gpiod":
+            if self.gpio_lib == "gpiod":
                 value = self.line.get_value()
-            elif GPIO_LIB == "RPi.GPIO":
+            elif self.gpio_lib == "RPi.GPIO":
                 value = GPIO.input(SOUND_PIN)
             return value
         except Exception as e:
@@ -167,15 +168,15 @@ class SoundSensor:
             "unit": "level",
             "events_per_second": events_per_second,
             "total_events": self.event_counter,
-            "device_mode": "real" if IS_RASPBERRY_PI else "mock",
-            "gpio_lib": GPIO_LIB if IS_RASPBERRY_PI else "none"
+            "device_mode": "real" if self.is_pi else "mock",
+            "gpio_lib": self.gpio_lib if self.is_pi else "none"
         }
         
         # MQTT로 전송
         if self.mqtt_sender.connected:
             topic = f"{mqtt_config.MQTT_CONFIG['topic_prefix']}/sound"
             self.mqtt_sender.publish_message(topic, sensor_data)
-            mode_text = f" ({GPIO_LIB})" if IS_RASPBERRY_PI else " (Mock)"
+            mode_text = f" ({self.gpio_lib})" if self.is_pi else " (Mock)"
             print(f"🔊 소음 레벨{mode_text}: {noise_level} (이벤트: {self.event_counter}개, {events_per_second}/초)")
         
         # 버퍼 및 카운터 초기화
@@ -199,7 +200,7 @@ class SoundSensor:
         self.thread.daemon = True
         self.thread.start()
         
-        lib_text = GPIO_LIB if IS_RASPBERRY_PI else "Mock"
+        lib_text = self.gpio_lib if self.is_pi else "Mock"
         print(f"🚀 소음 센서 모니터링 시작 ({lib_text}, GPIO {SOUND_PIN})")
         return True
     
@@ -213,13 +214,13 @@ class SoundSensor:
         self.mqtt_sender.disconnect()
         
         # GPIO 정리
-        if IS_RASPBERRY_PI:
+        if self.is_pi:
             try:
-                if GPIO_LIB == "gpiod" and self.line:
+                if self.gpio_lib == "gpiod" and self.line:
                     self.line.release()
                     if self.chip:
                         self.chip.close()
-                elif GPIO_LIB == "RPi.GPIO":
+                elif self.gpio_lib == "RPi.GPIO":
                     GPIO.cleanup(SOUND_PIN)
             except:
                 pass
