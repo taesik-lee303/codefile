@@ -90,3 +90,38 @@ aisl@gateway-529:~/deepcare/sensorunit $ python infrared_sensor.py
     ^^^^^^^^^^^^^^^^^^^^^^
 SyntaxError: name 'IS_RASPBERRY_PI' is used prior to global declaration
 
+-------------------------
+(venv) aisl@gateway-529:~/deepcare/sensorunit $ python dht_sensor.py
+✓ RPi.GPIO 라이브러리 사용 (이전 라즈베리파이 호환)
+⚠️ DHT 라이브러리를 찾을 수 없습니다. Mock 데이터를 사용합니다.
+MQTT 설정 로드됨: localhost:1883
+토픽 접두사: sensors
+🔧 Mock 모드: 온습도 센서 시뮬레이션 (GPIO 22)
+🔄 MQTT 브로커 연결 중: localhost:1883...
+✗ MQTT 연결 오류: [Errno 111] Connection refused
+✗ MQTT 연결 실패
+🛑 온습도 센서 모니터링 중지
+
+(venv) aisl@gateway-529:~/deepcare/sensorunit $ python sound_sensor.py
+✓ RPi.GPIO 라이브러리 사용 (이전 라즈베리파이 호환)
+MQTT 설정 로드됨: localhost:1883
+토픽 접두사: sensors
+✗ GPIO 초기화 실패: Cannot determine SOC peripheral base address
+⚠️ Mock 모드로 전환합니다.
+🔄 MQTT 브로커 연결 중: localhost:1883...
+✗ MQTT 연결 오류: [Errno 111] Connection refused
+✗ MQTT 연결 실패
+🛑 소음 센서 모니터링 중지
+
+(venv) aisl@gateway-529:~/deepcare/sensorunit $ python infrared_sensor.py
+✓ RPi.GPIO 라이브러리 사용 (이전 라즈베리파이 호환)
+MQTT 설정 로드됨: localhost:1883
+토픽 접두사: sensors
+✗ GPIO 초기화 실패: Cannot determine SOC peripheral base address
+⚠️ Mock 모드로 전환합니다.
+🔄 MQTT 브로커 연결 중: localhost:1883...
+✗ MQTT 연결 오류: [Errno 111] Connection refused
+✗ MQTT 연결 실패
+🛑 적외선 센서 모니터링 중지
+
+
