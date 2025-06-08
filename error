@@ -83,3 +83,10 @@ Traceback (most recent call last):
     GPIO.setup(INFRARED_PIN, GPIO.IN)
 RuntimeError: Cannot determine SOC peripheral base address
 
+----
+aisl@gateway-529:~/deepcare/sensorunit $ python infrared_sensor.py
+  File "/home/aisl/deepcare/sensorunit/infrared_sensor.py", line 73
+    global IS_RASPBERRY_PI
+    ^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: name 'IS_RASPBERRY_PI' is used prior to global declaration
+
