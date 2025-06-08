@@ -1,16 +1,37 @@
 #!/usr/bin/env python3
 """
 소음 센서 데이터 수집 및 MQTT 전송
-GPIO 27번 핀 사용
+GPIO 27번 핀 사용 - 라즈베리파이 5 호환
 """
 
-import RPi.GPIO as GPIO
 import time
 import json
 from datetime import datetime
 from collections import deque
 import numpy as np
 import threading
+
+# GPIO 라이브러리 선택 (라즈베리파이 5 호환)
+GPIO_LIB = None
+IS_RASPBERRY_PI = False
+
+# gpiod 라이브러리 시도 (라즈베리파이 5 권장)
+try:
+    import gpiod
+    GPIO_LIB = "gpiod"
+    IS_RASPBERRY_PI = True
+    print("✓ gpiod 라이브러리 사용 (라즈베리파이 5 호환)")
+except ImportError:
+    # RPi.GPIO 시도 (이전 버전 호환)
+    try:
+        import RPi.GPIO as GPIO
+        GPIO_LIB = "RPi.GPIO"
+        IS_RASPBERRY_PI = True
+        print("✓ RPi.GPIO 라이브러리 사용 (이전 라즈베리파이 호환)")
+    except ImportError:
+        print("⚠️ GPIO 라이브러리를 찾을 수 없습니다. Mock 모드로 실행합니다.")
+        IS_RASPBERRY_PI = False
+
 from mqtt_sensor_sender import MQTTSensorSender
 import mqtt_config
 
@@ -23,9 +44,38 @@ AVERAGE_INTERVAL = 5.0  # 5초 평균
 
 class SoundSensor:
     def __init__(self):
+        self.chip = None
+        self.line = None
+        
         # GPIO 초기화
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setup(SOUND_PIN, GPIO.IN)
+        if IS_RASPBERRY_PI:
+            try:
+                if GPIO_LIB == "gpiod":
+                    # gpiod 초기화 (라즈베리파이 5)
+                    try:
+                        self.chip = gpiod.Chip('gpiochip4')  # 라즈베리파이 5
+                    except:
+                        self.chip = gpiod.Chip('gpiochip0')  # 이전 버전 fallback
+                    
+                    self.line = self.chip.get_line(SOUND_PIN)
+                    self.line.request(consumer="sound_sensor", type=gpiod.LINE_REQ_DIR_IN)
+                    print(f"✓ gpiod로 소음 센서 초기화 완료 (GPIO {SOUND_PIN})")
+                    
+                elif GPIO_LIB == "RPi.GPIO":
+                    # RPi.GPIO 초기화
+                    GPIO.setmode(GPIO.BCM)
+                    GPIO.setup(SOUND_PIN, GPIO.IN)
+                    print(f"✓ RPi.GPIO로 소음 센서 초기화 완료 (GPIO {SOUND_PIN})")
+                    
+            except Exception as e:
+                print(f"✗ GPIO 초기화 실패: {e}")
+                print("⚠️ Mock 모드로 전환합니다.")
+                global IS_RASPBERRY_PI
+                IS_RASPBERRY_PI = False
+                if self.chip:
+                    self.chip.close()
+        else:
+            print(f"🔧 Mock 모드: 소음 센서 시뮬레이션 (GPIO {SOUND_PIN})")
         
         # 데이터 버퍼 (5초 = 50개 샘플)
         self.buffer = deque(maxlen=int(AVERAGE_INTERVAL / SAMPLE_INTERVAL))
@@ -48,11 +98,19 @@ class SoundSensor:
     
     def read_sensor(self):
         """소음 센서 값 읽기"""
+        if not IS_RASPBERRY_PI:
+            # Mock 데이터: 랜덤 소음 시뮬레이션
+            import random
+            return random.choice([0, 0, 0, 0, 1])  # 20% 확률로 소음 감지
+            
         try:
-            value = GPIO.input(SOUND_PIN)
+            if GPIO_LIB == "gpiod":
+                value = self.line.get_value()
+            elif GPIO_LIB == "RPi.GPIO":
+                value = GPIO.input(SOUND_PIN)
             return value
         except Exception as e:
-            print(f"소음 센서 읽기 오류: {e}")
+            print(f"✗ 소음 센서 읽기 오류: {e}")
             return None
     
     def collect_data(self):
@@ -80,7 +138,7 @@ class SoundSensor:
                 time.sleep(SAMPLE_INTERVAL)
                 
             except Exception as e:
-                print(f"데이터 수집 오류: {e}")
+                print(f"✗ 데이터 수집 오류: {e}")
                 time.sleep(1)
     
     def calculate_and_send_average(self):
@@ -108,14 +166,17 @@ class SoundSensor:
             "data": noise_level,
             "unit": "level",
             "events_per_second": events_per_second,
-            "total_events": self.event_counter
+            "total_events": self.event_counter,
+            "device_mode": "real" if IS_RASPBERRY_PI else "mock",
+            "gpio_lib": GPIO_LIB if IS_RASPBERRY_PI else "none"
         }
         
         # MQTT로 전송
         if self.mqtt_sender.connected:
             topic = f"{mqtt_config.MQTT_CONFIG['topic_prefix']}/sound"
             self.mqtt_sender.publish_message(topic, sensor_data)
-            print(f"소음 레벨: {noise_level} (이벤트: {self.event_counter}개, {events_per_second}/초)")
+            mode_text = f" ({GPIO_LIB})" if IS_RASPBERRY_PI else " (Mock)"
+            print(f"🔊 소음 레벨{mode_text}: {noise_level} (이벤트: {self.event_counter}개, {events_per_second}/초)")
         
         # 버퍼 및 카운터 초기화
         self.buffer.clear()
@@ -125,12 +186,12 @@ class SoundSensor:
     def start(self):
         """센서 모니터링 시작"""
         if self.running:
-            print("이미 실행 중입니다.")
+            print("⚠️ 이미 실행 중입니다.")
             return False
         
         # MQTT 연결
         if not self.mqtt_sender.connect():
-            print("MQTT 연결 실패")
+            print("✗ MQTT 연결 실패")
             return False
         
         self.running = True
@@ -138,7 +199,8 @@ class SoundSensor:
         self.thread.daemon = True
         self.thread.start()
         
-        print(f"소음 센서 모니터링 시작 (GPIO {SOUND_PIN})")
+        lib_text = GPIO_LIB if IS_RASPBERRY_PI else "Mock"
+        print(f"🚀 소음 센서 모니터링 시작 ({lib_text}, GPIO {SOUND_PIN})")
         return True
     
     def stop(self):
@@ -151,22 +213,31 @@ class SoundSensor:
         self.mqtt_sender.disconnect()
         
         # GPIO 정리
-        GPIO.cleanup(SOUND_PIN)
-        print("소음 센서 모니터링 중지")
+        if IS_RASPBERRY_PI:
+            try:
+                if GPIO_LIB == "gpiod" and self.line:
+                    self.line.release()
+                    if self.chip:
+                        self.chip.close()
+                elif GPIO_LIB == "RPi.GPIO":
+                    GPIO.cleanup(SOUND_PIN)
+            except:
+                pass
+        print("🛑 소음 센서 모니터링 중지")
 
 
 if __name__ == "__main__":
     try:
         sensor = SoundSensor()
         if sensor.start():
-            print("소음 센서 모니터링 중... Ctrl+C로 종료")
+            print("🎵 소음 센서 모니터링 중... Ctrl+C로 종료")
             
             # 메인 스레드는 대기
             while True:
                 time.sleep(1)
                 
     except KeyboardInterrupt:
-        print("\n사용자에 의해 종료됨")
+        print("\n👋 사용자에 의해 종료됨")
     finally:
         if 'sensor' in locals():
             sensor.stop()
