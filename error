@@ -69,3 +69,17 @@ error: externally-managed-environment
 
 note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
 hint: See PEP 668 for the detailed specification.
+
+
+sensor error
+(venv) aisl@gateway-529:~/deepcare/sensorunit $ python infrared_sensor.py
+MQTT 설정 로드됨: localhost:1883
+토픽 접두사: sensors
+Traceback (most recent call last):
+  File "/home/aisl/deepcare/sensorunit/infrared_sensor.py", line 145, in <module>
+    sensor = InfraredSensor()
+             ^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/sensorunit/infrared_sensor.py", line 28, in __init__
+    GPIO.setup(INFRARED_PIN, GPIO.IN)
+RuntimeError: Cannot determine SOC peripheral base address
+
