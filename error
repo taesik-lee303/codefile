@@ -124,4 +124,18 @@ MQTT 설정 로드됨: localhost:1883
 ✗ MQTT 연결 실패
 🛑 적외선 센서 모니터링 중지
 
+----------------
+06.09
+(venv) aisl@gateway-529:~/deepcare/sensor $ python3 rpi5-infrared-sensor-simple.py
+MQTT 설정 로드됨: localhost:1883
+토픽 접두사: sensors
+Traceback (most recent call last):
+  File "/home/aisl/deepcare/sensor/rpi5-infrared-sensor-simple.py", line 161, in <module>
+    sensor = InfraredSensorRPi5()
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/sensor/rpi5-infrared-sensor-simple.py", line 41, in __init__
+    config = gpiod.line_request()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: module 'gpiod' has no attribute 'line_request'
+
 
