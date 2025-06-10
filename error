@@ -163,5 +163,19 @@ spi_bcm2835            49152  0
 spi_dw_mmio            49152  0
 spi_dw                 49152  1 spi_dw_mmio
 (venv) aisl@gateway-529:~/deepcare $ lsmod | grep fbtft
+-----
+ aisl@gateway-529:~/deepcare $ python3 gpiotest.py
+Traceback (most recent call last):
+  File "/home/aisl/deepcare/gpiotest.py", line 7, in <module>
+    serial = spi(port=0, device=0, gpio_DC=24, gpio_RST=25, 
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aisl/venv/lib/python3.11/site-packages/luma/core/interface/serial.py", line 302, in __init__
+    bitbang.__init__(self, gpio, transfer_size, reset_hold_time, reset_release_time, DC=gpio_DC, RST=gpio_RST)
+  File "/home/aisl/venv/lib/python3.11/site-packages/luma/core/interface/serial.py", line 190, in __init__
+    self._DC = self._configure(kwargs.get("DC"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aisl/venv/lib/python3.11/site-packages/luma/core/interface/serial.py", line 203, in _configure
+    self._gpio.setup(pin, self._gpio.OUT)
+RuntimeError: Cannot determine SOC peripheral base address
 
 
