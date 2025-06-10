@@ -144,5 +144,24 @@ Traceback (most recent call last):
     import board
 ModuleNotFoundError: No module named 'board'
 
+---------
+06.10 display error
+(venv) aisl@gateway-529:~/deepcare $ uname -r
+6.12.25+rpt-rpi-2712
+(venv) aisl@gateway-529:~/deepcare $ ls /lib/modules/$(uname -r)/kernel/drivers/staging/fbtft/
+fb_agm1264k-fl.ko.xz  fb_ili9325.ko.xz  fb_s6d1121.ko.xz  fbtft.ko.xz
+fb_bd663474.ko.xz     fb_ili9340.ko.xz  fb_sh1106.ko.xz   fb_tinylcd.ko.xz
+fb_hx8340bn.ko.xz     fb_ili9341.ko.xz  fb_ssd1289.ko.xz  fb_tls8204.ko.xz
+fb_hx8347d.ko.xz      fb_ili9481.ko.xz  fb_ssd1306.ko.xz  fb_uc1611.ko.xz
+fb_hx8353d.ko.xz      fb_ili9486.ko.xz  fb_ssd1331.ko.xz  fb_uc1701.ko.xz
+fb_hx8357d.ko.xz      fb_pcd8544.ko.xz  fb_ssd1351.ko.xz  fb_upd161704.ko.xz
+fb_ili9163.ko.xz      fb_ra8875.ko.xz   fb_st7735r.ko.xz
+fb_ili9320.ko.xz      fb_s6d02a1.ko.xz  fb_st7789v.ko.xz
+(venv) aisl@gateway-529:~/deepcare $ lsmod | grep spi
+spidev                 49152  0
+spi_bcm2835            49152  0
+spi_dw_mmio            49152  0
+spi_dw                 49152  1 spi_dw_mmio
+(venv) aisl@gateway-529:~/deepcare $ lsmod | grep fbtft
 
 
