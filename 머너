@@ -1,0 +1,35 @@
+1:1 정사각형 영상을 5.5:3 비율로 변환하는 FFmpeg 명령어를 알려드릴게요.
+
+먼저 현재 영상의 해상도를 확인해야 정확한 명령어를 만들 수 있어요:
+
+```bash
+ffprobe -v quiet -print_format json -show_streams input.mp4
+```
+
+## 일반적인 경우들:
+
+**1080x1080 정사각형 영상인 경우:**
+```bash
+ffmpeg -i input.mp4 -vf "pad=1980:1080:(ow-iw)/2:(oh-ih)/2:black" output.mp4
+```
+
+**720x720 정사각형 영상인 경우:**
+```bash
+ffmpeg -i input.mp4 -vf "pad=1320:720:(ow-iw)/2:(oh-ih)/2:black" output.mp4
+```
+
+**500x500 정사각형 영상인 경우:**
+```bash
+ffmpeg -i input.mp4 -vf "pad=917:500:(ow-iw)/2:(oh-ih)/2:black" output.mp4
+```
+
+## 계산 공식:
+- 5.5:3 비율이므로 가로 = 세로 × (5.5/3) = 세로 × 1.833...
+- 정확히는 가로 = 세로 × 11/6
+
+현재 영상의 정확한 해상도(예: 1080x1080)를 알려주시면 정확한 명령어를 만들어드릴게요!
+
+또는 해상도에 상관없이 사용할 수 있는 범용 명령어:
+```bash
+ffmpeg -i input.mp4 -vf "pad=ih*11/6:ih:(ow-iw)/2:0:black" output.mp4
+```
