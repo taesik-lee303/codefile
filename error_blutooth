@@ -11,3 +11,7 @@
     For more information visit http://rptl.io/venv
 
 note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+_______resolve____________________
+스캔 오류: 'BLEDevice' object has no attribute 'rssi'
+❌ 블루투스 연결 실패
+
