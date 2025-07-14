@@ -14,4 +14,22 @@ note: If you believe this is a mistake, please contact your Python installation 
 _______resolve____________________
 스캔 오류: 'BLEDevice' object has no attribute 'rssi'
 ❌ 블루투스 연결 실패
+--------------------------------------------------
+Traceback (most recent call last):
+  File "/home/aisl/deepcare/sensor/bluetooth_test.py", line 31, in <module>
+    asyncio.run(find_pico_devices())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/sensor/bluetooth_test.py", line 11, in find_pico_devices
+    device_name = device.name or ""
+                  ^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'name'
+
 
