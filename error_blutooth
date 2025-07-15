@@ -31,5 +31,14 @@ Traceback (most recent call last):
     device_name = device.name or ""
                   ^^^^^^^^^^^
 AttributeError: 'str' object has no attribute 'name'
+-------------------------------------------------
+bleak error
+=== Bleak 라이브러리 정보 ===
+Traceback (most recent call last):
+  File "/home/aisl/deepcare/sensor/bleak_test.py", line 6, in <module>
+    print(f"버전: {bleak.__version__}")
+                 ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bleak' has no attribute '__version__'
+
 
 
