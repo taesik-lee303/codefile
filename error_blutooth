@@ -39,6 +39,61 @@ Traceback (most recent call last):
     print(f"버전: {bleak.__version__}")
                  ^^^^^^^^^^^^^^^^^
 AttributeError: module 'bleak' has no attribute '__version__'
+------------------------------------------------------------
+no get service 
+=== 완전한 Bleak 진단 ===
+Python 버전: 3.11.2 (main, Apr 28 2025, 14:11:48) [GCC 12.2.0]
+Python 실행 경로: /home/aisl/deepcare/venv/bin/python3
+가상환경: /home/aisl/deepcare/venv
+
+=== 설치된 패키지 확인 ===
+Bleak 관련 패키지:
+  bleak              1.0.1
+
+=== Bleak 임포트 테스트 ===
+✅ bleak 임포트 성공
+bleak 위치: /home/aisl/deepcare/venv/lib/python3.11/site-packages/bleak/__init__.py
+⚠️ 버전 정보를 찾을 수 없음
+
+=== BleakClient 분석 ===
+✅ BleakClient 임포트 성공
+총 공개 메서드/속성: 14
+
+중요 메서드 존재 여부:
+  connect: ✅
+  disconnect: ✅
+  is_connected: ✅
+  get_services: ❌
+  services: ✅
+  read_gatt_char: ✅
+  write_gatt_char: ✅
+
+❌ get_services가 없습니다!
+서비스 관련 대안 찾는 중...
+서비스 관련 속성들: ['services']
+GATT 관련 속성들: ['read_gatt_char', 'read_gatt_descriptor', 'write_gatt_char', 'write_gatt_descriptor']
+
+전체 공개 메서드/속성 목록:
+  - address
+  - connect
+  - disconnect
+  - is_connected
+  - mtu_size
+  - pair
+  - read_gatt_char
+  - read_gatt_descriptor
+  - services
+  - start_notify
+  - stop_notify
+  - unpair
+  - write_gatt_char
+  - write_gatt_descriptor
+
+=== BleakClient 객체 생성 테스트 ===
+✅ BleakClient 객체 생성 성공
+❌ 객체에 get_services 메서드 없음
+객체의 서비스 관련 메서드:
+  - services
 
 
 
