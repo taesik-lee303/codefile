@@ -18,8 +18,8 @@ import threading
 PICO_NAME = "PicoW-Sensor"
 # If you know the exact MAC address, you can specify it here
 # PICO_ADDRESS = "XX:XX:XX:XX:XX:XX"
-SERVICE_UUID = "12345678-1234-5678-1234-56789abcdef0"
-CHAR_UUID = "12345678-1234-5678-1234-56789abcdef1"
+SERVICE_UUID = "00001234-0000-1000-8000-00805f9b34fb"  # 16-bit UUID 0x1234
+CHAR_UUID = "00005678-0000-1000-8000-00805f9b34fb"     # 16-bit UUID 0x5678
 
 # Audio Configuration
 CHUNK = 1024
@@ -226,7 +226,7 @@ class BLEClient:
     def notification_handler(self, sender, data):
         """Handle notifications from Pico W"""
         try:
-            command, pir_value, sound_value = struct.unpack("BBH", data)
+            command, pir_value, sound_value = struct.unpack("<BBH", data)  # Little-endian
             
             if command == 1:  # Activation signal
                 print(f"Activation signal received! PIR: {pir_value}, Sound: {sound_value}")
