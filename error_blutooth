@@ -116,5 +116,24 @@ GATT 관련 속성들: ['read_gatt_char', 'read_gatt_descriptor', 'write_gatt_ch
 객체의 서비스 관련 메서드:
   - services
 
+--------------------------package install error(pip3 install bleak==1.0.1 picamera2)------------
+Using cached python-prctl-1.8.1.tar.gz (28 kB)
+  Preparing metadata (setup.py) ... error
+  error: subprocess-exited-with-error
+  
+  × python setup.py egg_info did not run successfully.
+  │ exit code: 1
+  ╰─> [1 lines of output]
+      You need to install libcap development headers to build this module
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: metadata-generation-failed
+
+× Encountered error while generating package metadata.
+╰─> See above for output.
+
+note: This is an issue with the package mentioned above, not pip.
+hint: See above for details.
 
 
