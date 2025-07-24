@@ -17,7 +17,7 @@ import threading
 # BLE Configuration
 PICO_NAME = "PicoW-Sensor"
 # If you know the exact MAC address, you can specify it here
-# PICO_ADDRESS = "XX:XX:XX:XX:XX:XX"
+PICO_ADDRESS = "88:A2:9E:02:3B:94"
 SERVICE_UUID = "00001234-0000-1000-8000-00805f9b34fb"  # 16-bit UUID 0x1234
 CHAR_UUID = "00005678-0000-1000-8000-00805f9b34fb"     # 16-bit UUID 0x5678
 
