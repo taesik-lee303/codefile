@@ -7,6 +7,27 @@
     create a virtual environment using python3 -m venv path/to/venv.
     Then use path/to/venv/bin/python and path/to/venv/bin/pip. Make
     sure you have python3-full installed.
+
+------------------------package install error(pip3 install bleak==1.0.1 picamera2)-----------------
+Using cached python-prctl-1.8.1.tar.gz (28 kB)
+  Preparing metadata (setup.py) ... error
+  error: subprocess-exited-with-error
+  
+  × python setup.py egg_info did not run successfully.
+  │ exit code: 1
+  ╰─> [1 lines of output]
+      You need to install libcap development headers to build this module
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: metadata-generation-failed
+
+× Encountered error while generating package metadata.
+╰─> See above for output.
+
+note: This is an issue with the package mentioned above, not pip.
+hint: See above for details.
+
     
     For more information visit http://rptl.io/venv
 
