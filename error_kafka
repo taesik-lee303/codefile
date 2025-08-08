@@ -1,0 +1,15 @@
+ File "/home/aisl/deepcare/raspberrypi5/hardware/rasp_uart.py", line 287, in <module>
+    processor = ThresholdEventProcessor()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/raspberrypi5/hardware/rasp_uart.py", line 39, in __init__
+    self.producer = KafkaProducer(
+                    ^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/kafka/producer/kafka.py", line 481, in __init__
+    client = self.config['kafka_client'](
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/kafka/client_async.py", line 262, in __init__
+    self.config['api_version'] = self.check_version()
+                                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/kafka/client_async.py", line 1074, in check_version
+    raise Errors.NoBrokersAvailable()
+kafka.errors.NoBrokersAvailable: NoBrokersAvailable
