@@ -178,4 +178,10 @@ Traceback (most recent call last):
     self._gpio.setup(pin, self._gpio.OUT)
 RuntimeError: Cannot determine SOC peripheral base address
 
+-----------------------------------------------------
+File "/home/aisl/deepcare/raspberrypi5/scripts/launch_full_pipeline.py", line 28, in <module>
+    from features.biometric.thermal_rppg_enhanced import EnhancedThermalrPPGSystem, ThermalrPPGConfig, ProcessingMode
+  File "/home/aisl/deepcare/raspberrypi5/features/biometric/thermal_rppg_enhanced.py", line 3, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
 
