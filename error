@@ -364,4 +364,66 @@ UnboundLocalError: cannot access local variable 'KAFKA_ENABLED' where it is not 
 2025-08-13 12:01:57 [INFO] PipelineManager: 서비스 중지: kafka_broker
 Failed to stop kafka.service: Unit kafka.service not loaded.
 Failed to stop zookeeper.service: Unit zookeeper.service not loaded.
+-------------------------------------------------------------------------
+(venv) aisl@gateway-529:~/deepcare/raspberrypi5/features/display $ python3 display_manager.py
+2025-08-13 16:35:54 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-13 16:35:54 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-08-13 16:35:54 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-13 16:35:54 [INFO] kafka.consumer.subscription_state: Updating subscribed topics to: ('display-control',)
+2025-08-13 16:35:54 [INFO] DisplayManager: ✅ 디스플레이 매니저 Kafka 초기화 완료
+==================================================
+🖥️ 디스플레이 매니저 상태
+==================================================
+current_display: sensor
+process_running: False
+process_pid: None
+uptime: 0.006794452667236328
+mode_switches: 0
+last_switch_ago: None
+available_displays: ['sensor', 'conversation', 'video']
+==================================================
+2025-08-13 16:35:54 [INFO] DisplayManager: 🚀 디스플레이 매니저 시작
+2025-08-13 16:35:54 [INFO] DisplayManager: 📋 사용 가능한 디스플레이: ['sensor', 'conversation', 'video']
+2025-08-13 16:35:54 [INFO] DisplayManager: 🏠 기본 디스플레이: sensor
+2025-08-13 16:35:54 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-13 16:35:54 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-13 16:35:54 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-08-13 16:35:54 [INFO] kafka.cluster: Coordinator for group/display-manager-group is BrokerMetadata(nodeId='coordinator-1', host='localhost', port=9092, rack=None)
+2025-08-13 16:35:54 [INFO] kafka.coordinator: Discovered coordinator coordinator-1 for group display-manager-group
+2025-08-13 16:35:54 [INFO] kafka.coordinator.heartbeat: Starting new heartbeat thread
+2025-08-13 16:35:54 [INFO] kafka.coordinator.consumer: Revoking previously assigned partitions set() for group display-manager-group
+2025-08-13 16:35:54 [INFO] kafka.coordinator: Failed to join group display-manager-group: NodeNotReadyError: coordinator-1
+2025-08-13 16:35:54 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=coordinator-1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-13 16:35:54 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=coordinator-1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-13 16:35:54 [INFO] kafka.coordinator: (Re-)joining group display-manager-group
+2025-08-13 16:35:54 [INFO] kafka.coordinator: Received member id raspberrypi5-pipeline-consumer-d2dfb0b6-16a4-43bd-a8d9-f9b2eb14d02d for group display-manager-group; will retry join-group
+2025-08-13 16:35:54 [INFO] kafka.coordinator: Failed to join group display-manager-group: [Error 79] MemberIdRequiredError
+2025-08-13 16:35:54 [INFO] kafka.coordinator: (Re-)joining group display-manager-group
+2025-08-13 16:35:59 [INFO] kafka.coordinator: Successfully joined group display-manager-group <Generation 8 (member_id: raspberrypi5-pipeline-consumer-d2dfb0b6-16a4-43bd-a8d9-f9b2eb14d02d, protocol: range)>
+2025-08-13 16:35:59 [INFO] kafka.consumer.subscription_state: Updated partition assignment: []
+2025-08-13 16:35:59 [INFO] kafka.coordinator.consumer: Setting newly assigned partitions set() for group display-manager-group
+^C2025-08-13 16:36:12 [INFO] DisplayManager: 🛑 사용자에 의해 중단됨
+2025-08-13 16:36:12 [INFO] DisplayManager: 🧹 디스플레이 매니저 리소스 정리 중...
+2025-08-13 16:36:12 [INFO] kafka.coordinator.heartbeat: Stopping heartbeat thread
+Exception in thread Thread-1 (kafka_consumer_loop):
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/threading.py", line 1038, in _bootstrap_inner
+2025-08-13 16:36:13 [INFO] kafka.coordinator: Leaving consumer group (display-manager-group).
+    self.run()
+  File "/usr/lib/python3.11/threading.py", line 975, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/aisl/deepcare/raspberrypi5/features/display/display_manager.py", line 115, in kafka_consumer_loop
+    for message in self.consumer:
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/kafka/consumer/group.py", line 1188, in __next__
+    return next(self._iterator)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/kafka/consumer/group.py", line 1160, in _message_generator_v2
+    record_map = self.poll(timeout_ms=timeout_ms, update_offsets=False)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/kafka/consumer/group.py", line 679, in poll
+2025-08-13 16:36:13 [INFO] kafka.coordinator: LeaveGroup request for group display-manager-group returned successfully
+    assert not self._closed, 'KafkaConsumer is closed'
+AssertionError: KafkaConsumer is closed
+2025-08-13 16:36:13 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-08-13 16:36:13 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=coordinator-1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
 
