@@ -185,3 +185,183 @@ File "/home/aisl/deepcare/raspberrypi5/scripts/launch_full_pipeline.py", line 28
     import torch
 ModuleNotFoundError: No module named 'torch'
 
+-------------------------------------------------------------
+
+e slave format for 'plug:hw'
+ALSA lib pcm_plug.c:839:(snd_pcm_plug_hw_refine_schange) Format: S16_LE
+ALSA lib pcm_plug.c:844:(snd_pcm_plug_hw_refine_schange) Slave format: IEC958_SUBFRAME_LE
+ALSA lib pcm_plug.c:924:(snd_pcm_plug_hw_refine_cchange) Unable to find an usable client format
+ALSA lib pcm_plug.c:928:(snd_pcm_plug_hw_refine_cchange) Format: S16_LE
+ALSA lib pcm_plug.c:933:(snd_pcm_plug_hw_refine_cchange) Slave format: IEC958_SUBFRAME_LE
+ALSA lib pcm_plug.c:835:(snd_pcm_plug_hw_refine_schange) Unable to find an usable slave format for 'plug:hw'
+ALSA lib pcm_plug.c:839:(snd_pcm_plug_hw_refine_schange) Format: S16_LE
+ALSA lib pcm_plug.c:844:(snd_pcm_plug_hw_refine_schange) Slave format: IEC958_SUBFRAME_LE
+ALSA lib pcm_plug.c:924:(snd_pcm_plug_hw_refine_cchange) Unable to find an usable client format
+ALSA lib pcm_plug.c:928:(snd_pcm_plug_hw_refine_cchange) Format: S16_LE
+ALSA lib pcm_plug.c:933:(snd_pcm_plug_hw_refine_cchange) Slave format: IEC958_SUBFRAME_LE
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_direct.c:1258:(snd1_pcm_direct_initialize_slave) requested or auto-format is not available
+ALSA lib pcm_dmix.c:1011:(snd_pcm_dmix_open) unable to initialize slave
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+2025-08-13 12:01:30 [INFO] TTSSTTManager: ✅ STT 초기화 성공 (마이크: 6개)
+2025-08-13 12:01:30 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-13 12:01:30 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-08-13 12:01:30 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-13 12:01:30 [INFO] kafka.consumer.subscription_state: Updating subscribed topics to: ('audio-commands',)
+2025-08-13 12:01:30 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-producer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-13 12:01:30 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-producer, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-08-13 12:01:30 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-producer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-13 12:01:30 [INFO] TTSSTTManager: TTS/STT 매니저 초기화 완료
+2025-08-13 12:01:30 [INFO] TTSSTTManager: 🎧 카프카 명령 수신 시작
+2025-08-13 12:01:30 [INFO] TTSSTTManager: ✅ TTS/STT 매니저 시작됨
+2025-08-13 12:01:30 [INFO] PipelineManager: ✅ 서비스 시작 완료: tts_stt_system
+2025-08-13 12:01:30 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-13 12:01:30 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-13 12:01:30 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-08-13 12:01:30 [INFO] kafka.cluster: Coordinator for group/tts-stt-manager is BrokerMetadata(nodeId='coordinator-1', host='localhost', port=9092, rack=None)
+2025-08-13 12:01:30 [INFO] kafka.coordinator: Discovered coordinator coordinator-1 for group tts-stt-manager
+2025-08-13 12:01:30 [INFO] kafka.coordinator.heartbeat: Starting new heartbeat thread
+2025-08-13 12:01:30 [INFO] kafka.coordinator.consumer: Revoking previously assigned partitions set() for group tts-stt-manager
+2025-08-13 12:01:30 [INFO] kafka.coordinator: Failed to join group tts-stt-manager: NodeNotReadyError: coordinator-1
+2025-08-13 12:01:30 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=coordinator-1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-13 12:01:30 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=coordinator-1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-13 12:01:30 [INFO] kafka.coordinator: (Re-)joining group tts-stt-manager
+2025-08-13 12:01:30 [INFO] kafka.coordinator: Received member id raspberrypi5-pipeline-consumer-a50f3db7-22d4-46af-ac3c-075dc8f84dac for group tts-stt-manager; will retry join-group
+2025-08-13 12:01:30 [INFO] kafka.coordinator: Failed to join group tts-stt-manager: [Error 79] MemberIdRequiredError
+2025-08-13 12:01:30 [INFO] kafka.coordinator: (Re-)joining group tts-stt-manager
+2025-08-13 12:01:30 [INFO] kafka.coordinator: Successfully joined group tts-stt-manager <Generation 10 (member_id: raspberrypi5-pipeline-consumer-a50f3db7-22d4-46af-ac3c-075dc8f84dac, protocol: range)>
+2025-08-13 12:01:30 [INFO] kafka.coordinator: Elected group leader -- performing partition assignments using range
+2025-08-13 12:01:30 [INFO] kafka.consumer.subscription_state: Updated partition assignment: [TopicPartition(topic='audio-commands', partition=0)]
+2025-08-13 12:01:30 [INFO] kafka.coordinator.consumer: Setting newly assigned partitions {TopicPartition(topic='audio-commands', partition=0)} for group tts-stt-manager
+2025-08-13 12:01:31 [INFO] ThresholdEventProcessor: 🎯 임계값 이벤트 수신: {'detection_time': 1755086491, 'type': 'motion_alert', 'value': True, 'timestamp': 1755086491}
+2025-08-13 12:01:31 [WARNING] ThresholdEventProcessor: 🚶 움직임 감지됨 (감지시간: 1755086491)
+2025-08-13 12:01:31 [INFO] ThresholdEventProcessor: 📤 Kafka 전송 완료: motion_alert
+2025-08-13 12:01:32 [INFO] PipelineManager: 서비스 시작: rppg_camera
+2025-08-13 12:01:32 [ERROR] PipelineManager: ❌ 서비스 rppg_camera 시작 오류: REALTIME
+2025-08-13 12:01:32 [ERROR] PipelineManager: 필수 서비스 rppg_camera 시작 실패
+2025-08-13 12:01:32 [INFO] PipelineManager: 서비스 시작: event_processor
+2025-08-13 12:01:32 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-13 12:01:32 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-08-13 12:01:32 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-13 12:01:32 [INFO] kafka.consumer.subscription_state: Updating subscribed topics to: ('sensor-events', 'thermal-camera-raw', 'thermal-alerts', 'audio-input', 'audio-commands', 'audio-alerts')
+2025-08-13 12:01:32 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-producer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-13 12:01:32 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-producer, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-08-13 12:01:32 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-producer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-13 12:01:32 [ERROR] PipelineManager: ❌ 서비스 event_processor 시작 오류: 'EventProcessor' object has no attribute 'setup_response_rules'
+2025-08-13 12:01:32 [ERROR] PipelineManager: 필수 서비스 event_processor 시작 실패
+2025-08-13 12:01:32 [INFO] PipelineManager: 서비스 시작: basic_display
+2025-08-13 12:01:32 [INFO] PipelineManager: ✅ 서비스 시작 완료: basic_display
+/home/aisl/deepcare/venv/lib/python3.11/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+pygame 2.6.1 (SDL 2.28.4, Python 3.11.2)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+2025-08-13 12:01:34 [INFO] PipelineManager: 서비스 시작: conversation_display
+2025-08-13 12:01:34 [INFO] PipelineManager: ✅ 서비스 시작 완료: conversation_display
+/home/aisl/deepcare/venv/lib/python3.11/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+pygame 2.6.1 (SDL 2.28.4, Python 3.11.2)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+Traceback (most recent call last):
+  File "/home/aisl/deepcare/raspberrypi5/features/display/conversation_display.py", line 471, in <module>
+    display = ConversationDisplay()
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/raspberrypi5/features/display/conversation_display.py", line 140, in __init__
+    self.init_kafka()
+  File "/home/aisl/deepcare/raspberrypi5/features/display/conversation_display.py", line 144, in init_kafka
+    if not KAFKA_ENABLED:
+           ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'KAFKA_ENABLED' where it is not associated with a value
+2025-08-13 12:01:36 [INFO] PipelineManager: 서비스 모니터링 시작
+2025-08-13 12:01:36 [ERROR] PipelineManager: ❌ 파이프라인 부분 시작 (5/7)
+❌ 파이프라인 시작 실패
+로그를 확인하세요: pipeline_manager.log
+2025-08-13 12:01:36 [INFO] PipelineManager: 🛑 전체 파이프라인 중지
+2025-08-13 12:01:36 [INFO] PipelineManager: ============================================================
+2025-08-13 12:01:36 [INFO] PipelineManager: 📊 시스템 상태: ERROR
+2025-08-13 12:01:36 [INFO] PipelineManager: ------------------------------------------------------------
+2025-08-13 12:01:36 [INFO] PipelineManager: 🟢 kafka_broker: running (12s)
+2025-08-13 12:01:36 [INFO] PipelineManager: 🔴 rppg_camera: error [오류: 1]
+2025-08-13 12:01:36 [INFO] PipelineManager: 🟢 tts_stt_system: running (8s)
+2025-08-13 12:01:36 [INFO] PipelineManager: 🟢 uart_processor: running (10s)
+2025-08-13 12:01:36 [INFO] PipelineManager: 🔴 event_processor: error [오류: 1]
+2025-08-13 12:01:36 [INFO] PipelineManager: 🟢 basic_display: running (4s)
+2025-08-13 12:01:36 [INFO] PipelineManager: 🟢 conversation_display: running (2s)
+2025-08-13 12:01:36 [INFO] PipelineManager: ============================================================
+2025-08-13 12:01:37 [INFO] ThresholdEventProcessor: 🎯 임계값 이벤트 수신: {'detection_time': 1755086497, 'type': 'motion_alert', 'value': True, 'timestamp': 1755086497}
+2025-08-13 12:01:37 [WARNING] ThresholdEventProcessor: 🚶 움직임 감지됨 (감지시간: 1755086497)
+2025-08-13 12:01:37 [INFO] ThresholdEventProcessor: 📤 Kafka 전송 완료: motion_alert
+2025-08-13 12:01:39 [INFO] ThresholdEventProcessor: 🎯 임계값 이벤트 수신: {'value': {'timestamp': 1755086499, 'climate': {'status': 'ok', 'humidity': 57.0, 'temperature': 25.5}, 'noise_level': 0.59, 'motion_detected': True, 'air_quality': {'message': '[Errno 5] EIO', 'status': 'error'}}, 'type': 'sensor_data', 'timestamp': 1755086499}
+2025-08-13 12:01:39 [INFO] ThresholdEventProcessor: 📊 센서 데이터 수신:
+2025-08-13 12:01:39 [INFO] ThresholdEventProcessor:   🔊 소음: 0.59%
+2025-08-13 12:01:39 [INFO] ThresholdEventProcessor:   🚶 움직임: 감지
+2025-08-13 12:01:39 [WARNING] ThresholdEventProcessor:   🌫️ 미세먼지: 데이터 없음
+2025-08-13 12:01:39 [INFO] ThresholdEventProcessor:   🌡️ 온도: 25.5°C
+2025-08-13 12:01:39 [INFO] ThresholdEventProcessor:   💧 습도: 57.0%
+2025-08-13 12:01:39 [INFO] ThresholdEventProcessor: 📤 Kafka 전송 완료: sensor_data
+2025-08-13 12:01:43 [INFO] ThresholdEventProcessor: 🎯 임계값 이벤트 수신: {'detection_time': 1755086503, 'type': 'motion_alert', 'value': True, 'timestamp': 1755086503}
+2025-08-13 12:01:43 [WARNING] ThresholdEventProcessor: 🚶 움직임 감지됨 (감지시간: 1755086503)
+2025-08-13 12:01:43 [INFO] ThresholdEventProcessor: 📤 Kafka 전송 완료: motion_alert
+2025-08-13 12:01:46 [INFO] PipelineManager: 서비스 중지: conversation_display
+2025-08-13 12:01:46 [INFO] PipelineManager: ✅ 서비스 중지 완료: conversation_display
+2025-08-13 12:01:47 [INFO] PipelineManager: 서비스 중지: basic_display
+2025-08-13 12:01:47 [INFO] PipelineManager: ✅ 서비스 중지 완료: basic_display
+2025-08-13 12:01:48 [INFO] PipelineManager: 서비스 중지: event_processor
+2025-08-13 12:01:48 [INFO] PipelineManager: ✅ 서비스 중지 완료: event_processor
+2025-08-13 12:01:49 [INFO] ThresholdEventProcessor: 🎯 임계값 이벤트 수신: {'detection_time': 1755086509, 'type': 'motion_alert', 'value': True, 'timestamp': 1755086509}
+2025-08-13 12:01:49 [WARNING] ThresholdEventProcessor: 🚶 움직임 감지됨 (감지시간: 1755086509)
+2025-08-13 12:01:49 [INFO] ThresholdEventProcessor: 📤 Kafka 전송 완료: motion_alert
+2025-08-13 12:01:49 [INFO] PipelineManager: 서비스 중지: rppg_camera
+2025-08-13 12:01:49 [INFO] PipelineManager: ✅ 서비스 중지 완료: rppg_camera
+2025-08-13 12:01:50 [INFO] PipelineManager: 서비스 중지: tts_stt_system
+2025-08-13 12:01:50 [INFO] TTSSTTManager: 🛑 TTS/STT 매니저 중지 중...
+2025-08-13 12:01:50 [INFO] ThresholdEventProcessor: 🎯 임계값 이벤트 수신: {'value': {'timestamp': 1755086510, 'climate': {'status': 'ok', 'humidity': 56.9, 'temperature': 25.4}, 'noise_level': 1.0, 'motion_detected': True, 'air_quality': {'message': '[Errno 5] EIO', 'status': 'error'}}, 'type': 'sensor_data', 'timestamp': 1755086510}
+2025-08-13 12:01:50 [INFO] ThresholdEventProcessor: 📊 센서 데이터 수신:
+2025-08-13 12:01:50 [INFO] ThresholdEventProcessor:   🔊 소음: 1.0%
+2025-08-13 12:01:50 [INFO] ThresholdEventProcessor:   🚶 움직임: 감지
+2025-08-13 12:01:50 [WARNING] ThresholdEventProcessor:   🌫️ 미세먼지: 데이터 없음
+2025-08-13 12:01:50 [INFO] ThresholdEventProcessor:   🌡️ 온도: 25.4°C
+2025-08-13 12:01:50 [INFO] ThresholdEventProcessor:   💧 습도: 56.9%
+2025-08-13 12:01:50 [INFO] ThresholdEventProcessor: 📤 Kafka 전송 완료: sensor_data
+2025-08-13 12:01:55 [INFO] ThresholdEventProcessor: 🎯 임계값 이벤트 수신: {'detection_time': 1755086515, 'type': 'motion_alert', 'value': True, 'timestamp': 1755086515}
+2025-08-13 12:01:55 [WARNING] ThresholdEventProcessor: 🚶 움직임 감지됨 (감지시간: 1755086515)
+2025-08-13 12:01:55 [INFO] ThresholdEventProcessor: 📤 Kafka 전송 완료: motion_alert
+2025-08-13 12:01:55 [ERROR] TTSSTTManager: ❌ 명령 처리 루프 오류: KafkaConsumer is closed
+2025-08-13 12:01:55 [INFO] kafka.coordinator.heartbeat: Stopping heartbeat thread
+2025-08-13 12:01:55 [INFO] kafka.coordinator: Leaving consumer group (tts-stt-manager).
+2025-08-13 12:01:55 [INFO] kafka.coordinator: LeaveGroup request for group tts-stt-manager returned successfully
+2025-08-13 12:01:55 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-08-13 12:01:55 [INFO] kafka.consumer.fetcher: Fetch to node 1 failed: Cancelled: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>
+2025-08-13 12:01:55 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=coordinator-1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-08-13 12:01:55 [INFO] kafka.producer.kafka: <KafkaProducer client_id=raspberrypi5-pipeline-producer transactional_id=None>: Closing the Kafka producer with 9223372036.0 secs timeout.
+2025-08-13 12:01:55 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-producer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-08-13 12:01:55 [INFO] TTSSTTManager: 📊 TTS/STT 통계:
+2025-08-13 12:01:55 [INFO] TTSSTTManager:   TTS 요청: 0
+2025-08-13 12:01:55 [INFO] TTSSTTManager:   STT 요청: 0
+2025-08-13 12:01:55 [INFO] TTSSTTManager:   성공적 인식: 0
+2025-08-13 12:01:55 [INFO] TTSSTTManager:   오류 발생: 0
+2025-08-13 12:01:55 [INFO] TTSSTTManager: ✅ TTS/STT 매니저 중지됨
+2025-08-13 12:01:55 [INFO] PipelineManager: ✅ 서비스 중지 완료: tts_stt_system
+2025-08-13 12:01:56 [INFO] PipelineManager: 서비스 중지: uart_processor
+2025-08-13 12:01:56 [INFO] ThresholdEventProcessor: 🧹 리소스 정리 중...
+2025-08-13 12:01:56 [INFO] ThresholdEventProcessor: ✅ 직렬 포트 닫음
+2025-08-13 12:01:56 [ERROR] ThresholdEventProcessor: ❌ 예상치 못한 오류: 'NoneType' object cannot be interpreted as an integer
+2025-08-13 12:01:56 [INFO] ThresholdEventProcessor: 🧹 리소스 정리 중...
+2025-08-13 12:01:56 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-producer, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-08-13 12:01:56 [INFO] ThresholdEventProcessor: ✅ Kafka Producer 닫음
+2025-08-13 12:01:56 [INFO] ThresholdEventProcessor: ✅ Kafka Producer 닫음
+2025-08-13 12:01:56 [INFO] ThresholdEventProcessor: 📊 통계: 총수신=8, 필터됨=8, Kafka전송=8, 오류=0
+2025-08-13 12:01:56 [INFO] ThresholdEventProcessor: 📊 통계: 총수신=8, 필터됨=8, Kafka전송=8, 오류=0
+2025-08-13 12:01:56 [INFO] ThresholdEventProcessor: 👋 프로그램 종료
+2025-08-13 12:01:56 [INFO] ThresholdEventProcessor: 👋 프로그램 종료
+2025-08-13 12:01:56 [INFO] PipelineManager: ✅ 서비스 중지 완료: uart_processor
+2025-08-13 12:01:57 [INFO] PipelineManager: 서비스 중지: kafka_broker
+Failed to stop kafka.service: Unit kafka.service not loaded.
+Failed to stop zookeeper.service: Unit zookeeper.service not loaded.
+
