@@ -521,3 +521,20 @@ If you are trying to access a private or gated repo, make sure you are authentic
 Invalid username or password.
 
 
+-----------------------------
+[ERROR:0@1.460] global ./modules/core/src/persistence.cpp (505) open Can't open file: '/usr/lib/python3/dist-packages/data/haarcascade_frontalface_default.xml' in read mode
+❌ 얼굴 감지기 로드 실패
+❌ 치명적 오류 발생: Face cascade classifier failed to load
+Traceback (most recent call last):
+  File "/home/aisl/deepcare/raspberrypi5/features/biometric/rppg.py", line 721, in main
+    monitor = rPPGMonitor()
+              ^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/raspberrypi5/features/biometric/rppg.py", line 332, in __init__
+    self.processor = rPPGProcessor()
+                     ^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/raspberrypi5/features/biometric/rppg.py", line 117, in __init__
+    raise RuntimeError("Face cascade classifier failed to load")
+RuntimeError: Face cascade classifier failed to load
+
+
+
