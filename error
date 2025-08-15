@@ -463,4 +463,9 @@ Expression 'pthread_join( self->thread, &pret )' failed in 'src/os/unix/pa_unix_
 Expression 'PaUnixThread_Terminate( &stream->thread, !abort, &threadRes )' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 3102
 [!] Child exited with code 1: ['/home/aisl/deepcare/venv/bin/python3', '/home/aisl/deepcare/raspberrypi5/features/conversation/stt_whisper_local.py']
 
+----------------------------------
+Traceback (most recent call last):
+  File "/home/aisl/deepcare/raspberrypi5/scripts/launch_full_pipeline.py", line 27, in <module>
+    from features.conversation.tts_stt_manager import TTSSTTManager
+ImportError: cannot import name 'TTSSTTManager' from 'features.conversation.tts_stt_manager' (/home/aisl/deepcare/raspberrypi5/features/conversation/tts_stt_manager.py)
 
