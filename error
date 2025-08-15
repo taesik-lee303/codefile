@@ -469,3 +469,55 @@ Traceback (most recent call last):
     from features.conversation.tts_stt_manager import TTSSTTManager
 ImportError: cannot import name 'TTSSTTManager' from 'features.conversation.tts_stt_manager' (/home/aisl/deepcare/raspberrypi5/features/conversation/tts_stt_manager.py)
 
+_________________________________
+⚠️  Warning: 'huggingface-cli download' is deprecated. Use 'hf download' instead.
+Traceback (most recent call last):
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 409, in hf_raise_for_status
+    response.raise_for_status()
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://huggingface.co/api/datasets/rhasspy/piper-voices/revision/main
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/aisl/deepcare/venv/bin/huggingface-cli", line 7, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/huggingface_hub/commands/huggingface_cli.py", line 61, in main
+    service.run()
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/huggingface_hub/commands/download.py", line 157, in run
+    print(self._download())  # Print path to downloaded files
+          ^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/huggingface_hub/commands/download.py", line 191, in _download
+    return snapshot_download(
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/huggingface_hub/_snapshot_download.py", line 245, in snapshot_download
+    raise api_call_error
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/huggingface_hub/_snapshot_download.py", line 165, in snapshot_download
+    repo_info = api.repo_info(repo_id=repo_id, repo_type=repo_type, revision=revision)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2853, in repo_info
+    return method(
+           ^^^^^^^
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2711, in dataset_info
+    hf_raise_for_status(r)
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 459, in hf_raise_for_status
+    raise _format(RepositoryNotFoundError, message, response) from e
+huggingface_hub.errors.RepositoryNotFoundError: 401 Client Error. (Request ID: Root=1-689f3524-282d8a3c18772cf076f58910;c02b65fb-53e1-4871-8063-303835924fe5)
+
+Repository Not Found for url: https://huggingface.co/api/datasets/rhasspy/piper-voices/revision/main.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated. For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+Invalid username or password.
+
+
