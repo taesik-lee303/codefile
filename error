@@ -555,5 +555,33 @@ TypeError: ServerConfig.__init__() got an unexpected keyword argument 'dummy_mod
     raise AttributeError(name) from None
 AttributeError: CAMERA
 
+-----------------------------
+2025-08-16 18:01:59 [INFO] PipelineManager: 서비스 중지: ai_camera_producer
+2025-08-16 18:01:59 [INFO] AdvancedRPPG-rppg_camera_001: 🛑 고급 rPPG 카메라 프로듀서 중지 중...
+2025-08-16 18:01:59 [ERROR] AdvancedRPPG-rppg_camera_001: ❌ 고급 생체 데이터 전송 실패: Object of type EventPriority is not JSON serializable
+2025-08-16 18:01:59 [ERROR] AdvancedRPPG-rppg_camera_001: 상세 오류: Traceback (most recent call last):
+  File "/home/aisl/deepcare/raspberrypi5/features/biometric/camera_producer.py", line 272, in send_advanced_biometric_data
+    self.producer.send(
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/kafka/producer/kafka.py", line 845, in send
+    value_bytes = self._serialize(
+                  ^^^^^^^^^^^^^^^^
+  File "/home/aisl/deepcare/venv/lib/python3.11/site-packages/kafka/producer/kafka.py", line 978, in _serialize
+    return f(data)
+           ^^^^^^^
+  File "/home/aisl/deepcare/raspberrypi5/features/biometric/camera_producer.py", line 57, in <lambda>
+    producer_config['value_serializer'] = lambda v: json.dumps(v, ensure_ascii=False).encode('utf-8')
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type EventPriority is not JSON serializable
 
 
