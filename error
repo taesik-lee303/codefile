@@ -546,5 +546,14 @@ Traceback (most recent call last):
     server_config = ServerConfig(
                     ^^^^^^^^^^^^^
 TypeError: ServerConfig.__init__() got an unexpected keyword argument 'dummy_mode'
+-----------------------------------------------------------
+2025-08-16 17:57:07 [ERROR] AdvancedRPPG-rppg_camera_001: 상세 오류: Traceback (most recent call last):
+  File "/home/aisl/deepcare/raspberrypi5/features/biometric/camera_producer.py", line 264, in send_advanced_biometric_data
+    device_type=DeviceType.CAMERA.value,
+                ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/enum.py", line 789, in __getattr__
+    raise AttributeError(name) from None
+AttributeError: CAMERA
+
 
 
