@@ -740,3 +740,57 @@ WARNING: Error parsing dependencies of send2trash: Expected matching RIGHT_PAREN
     sys-platform (=="darwin") ; extra == 'objc'
                  ~^
 
+--------------------------------
+2025-08-16 18:28:40 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-16 18:28:40 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-16 18:28:40 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-08-16 18:28:40 [INFO] kafka.cluster: Coordinator for group/rppg-therapy-group is BrokerMetadata(nodeId='coordinator-1', host='localhost', port=9092, rack=None)
+2025-08-16 18:28:40 [INFO] kafka.coordinator: Discovered coordinator coordinator-1 for group rppg-therapy-group
+2025-08-16 18:28:40 [INFO] kafka.coordinator.heartbeat: Starting new heartbeat thread
+2025-08-16 18:28:40 [INFO] kafka.coordinator.consumer: Revoking previously assigned partitions set() for group rppg-therapy-group
+2025-08-16 18:28:40 [INFO] kafka.coordinator: Failed to join group rppg-therapy-group: NodeNotReadyError: coordinator-1
+2025-08-16 18:28:40 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=coordinator-1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-16 18:28:40 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=coordinator-1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-16 18:28:40 [INFO] kafka.coordinator: (Re-)joining group rppg-therapy-group
+2025-08-16 18:28:40 [INFO] kafka.coordinator: Received member id raspberrypi5-pipeline-consumer-bf7f4a6b-6319-4c15-8a1a-c999e249ad6a for group rppg-therapy-group; will retry join-group
+2025-08-16 18:28:40 [INFO] kafka.coordinator: Failed to join group rppg-therapy-group: [Error 79] MemberIdRequiredError
+2025-08-16 18:28:40 [INFO] kafka.coordinator: (Re-)joining group rppg-therapy-group
+2025-08-16 18:28:40 [INFO] kafka.coordinator: Successfully joined group rppg-therapy-group <Generation 20 (member_id: raspberrypi5-pipeline-consumer-bf7f4a6b-6319-4c15-8a1a-c999e249ad6a, protocol: range)>
+2025-08-16 18:28:40 [INFO] kafka.coordinator: Elected group leader -- performing partition assignments using range
+2025-08-16 18:28:40 [INFO] kafka.consumer.subscription_state: Updated partition assignment: [TopicPartition(topic='biometric-alerts', partition=0), TopicPartition(topic='biometric-data', partition=0)]
+2025-08-16 18:28:40 [INFO] kafka.coordinator.consumer: Setting newly assigned partitions {TopicPartition(topic='biometric-data', partition=0), TopicPartition(topic='biometric-alerts', partition=0)} for group rppg-therapy-group
+2025-08-16 18:28:41 [INFO] PipelineManager: 서비스 시작: pico_color_bridge
+2025-08-16 18:28:41 [INFO] PipelineManager: ✅ 서비스 시작 완료: pico_color_bridge
+2025-08-16 18:28:42 [INFO] PipelineManager: 서비스 시작: tts_stt_system
+2025-08-16 18:28:42 [ERROR] PipelineManager: ❌ 서비스 tts_stt_system 시작 오류: 'FileHandler' object has no attribute 'fileno'
+2025-08-16 18:28:43 [INFO] PipelineManager: 서비스 시작: event_processor
+2025-08-16 18:28:43 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-16 18:28:43 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-08-16 18:28:43 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-16 18:28:43 [INFO] kafka.consumer.subscription_state: Updating subscribed topics to: ('sensor-events', 'thermal-camera-raw', 'thermal-alerts', 'audio-input', 'audio-commands', 'audio-alerts')
+2025-08-16 18:28:43 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-producer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-16 18:28:43 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-producer, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-08-16 18:28:43 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-producer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-16 18:28:43 [INFO] EventProcessor: 🚀 이벤트 처리기 시작
+2025-08-16 18:28:43 [INFO] EventProcessor: ✅ 이벤트 처리기 시작됨
+2025-08-16 18:28:43 [INFO] PipelineManager: ✅ 서비스 시작 완료: event_processor
+2025-08-16 18:28:43 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-16 18:28:43 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-16 18:28:43 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-08-16 18:28:43 [INFO] kafka.cluster: Coordinator for group/event-processor-group is BrokerMetadata(nodeId='coordinator-1', host='localhost', port=9092, rack=None)
+2025-08-16 18:28:43 [INFO] kafka.coordinator: Discovered coordinator coordinator-1 for group event-processor-group
+2025-08-16 18:28:43 [INFO] kafka.coordinator.heartbeat: Starting new heartbeat thread
+2025-08-16 18:28:43 [INFO] kafka.coordinator.consumer: Revoking previously assigned partitions set() for group event-processor-group
+2025-08-16 18:28:43 [INFO] kafka.coordinator: Failed to join group event-processor-group: NodeNotReadyError: coordinator-1
+2025-08-16 18:28:43 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=coordinator-1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-08-16 18:28:43 [INFO] kafka.conn: <BrokerConnection client_id=raspberrypi5-pipeline-consumer, node_id=coordinator-1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-08-16 18:28:43 [INFO] kafka.coordinator: (Re-)joining group event-processor-group
+2025-08-16 18:28:43 [INFO] kafka.coordinator: Received member id raspberrypi5-pipeline-consumer-6f0912b1-327d-4c90-abcd-849eed636348 for group event-processor-group; will retry join-group
+2025-08-16 18:28:43 [INFO] kafka.coordinator: Failed to join group event-processor-group: [Error 79] MemberIdRequiredError
+2025-08-16 18:28:43 [INFO] kafka.coordinator: (Re-)joining group event-processor-group
+2025-08-16 18:28:43 [INFO] kafka.coordinator: Successfully joined group event-processor-group <Generation 36 (member_id: raspberrypi5-pipeline-consumer-6f0912b1-327d-4c90-abcd-849eed636348, protocol: range)>
+2025-08-16 18:28:43 [INFO] kafka.coordinator: Elected group leader -- performing partition assignments using range
+2025-08-16 18:28:43 [INFO] kafka.consumer.subscription_state: Updated partition assignment: [TopicPartition(topic='audio-alerts', partition=0), TopicPartition(topic='audio-commands', partition=0), TopicPartition(topic='audio-input', partition=0), TopicPartition(topic='sensor-events', partition=0), TopicPartition(topic='thermal-alerts', partition=0), TopicPartition(topic='thermal-camera-raw', partition=0)]
+2025-08-16 18:28:43 [INFO] kafka.coordinator.consumer: Setting newly assigned partitions {TopicPartition(topic='sensor-events', partition=0), TopicPartition(topic='thermal-alerts', partition=0), TopicPartition(topic='audio-input', partition=0), TopicPartition(topic='audio-commands', partition=0), TopicPartition(topic='thermal-camera-raw', partition=0), TopicPartition(topic='audio-alerts', partition=0)} for group event-processor-group
+2025-08-16 18:28:44 [INFO] PipelineManager: 서비스 시작: display_manager
+2025-08-16 18:28:44 [ERROR] PipelineManager: ❌ 서비스 display_manager 시작 오류: 'FileHandler' object has no attribute 'fileno'
