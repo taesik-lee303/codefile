@@ -583,5 +583,53 @@ AttributeError: CAMERA
   File "/usr/lib/python3.11/json/encoder.py", line 180, in default
     raise TypeError(f'Object of type {o.__class__.__name__} '
 TypeError: Object of type EventPriority is not JSON serializable
+--------------------------------------------------------
+
+- 오디오 시스템 (마이크/스피커)
+2025-08-16 18:08:06 [INFO] PipelineManager: 📊 시스템 상태: ERROR
+- '대화' 또는 '대화하자' → 대화 모드 전환
+2025-08-16 18:08:06 [INFO] PipelineManager: 🔴 thermal_rppg_camera: error [오류: 1]
+- '온도', '습도', '미세먼지' 등 → 센서 정보 표시
+2025-08-16 18:08:06 [INFO] PipelineManager: 🟢 biometric_therapy: running (6s)
+2025-08-16 18:08:06 [INFO] PipelineManager: 🟢 pico_color_bridge: running (4s) [오류: 1]
+2025-08-16 18:08:06 [INFO] PipelineManager: 🔴 tts_stt_system: error [오류: 1]
+2025-08-16 18:08:06 [INFO] PipelineManager: 🟢 uart_processor: running (12s)
+2025-08-16 18:08:06 [INFO] PipelineManager: 🟢 event_processor: running (2s)
+2025-08-16 18:08:06 [INFO] PipelineManager: 🔴 display_manager: error [오류: 1]
+2025-08-16 18:08:06 [INFO] PipelineManager: ============================================================
+2025-08-16 18:08:27 [ERROR] AdvancedRPPG-rppg_camera_001: ❌ 캡처 처리 오류: 'RPPG' object has no attribute 'last_advanced_update'
+2025-08-16 18:08:28 [ERROR] AdvancedRPPG-rppg_camera_001: ❌ 캡처 처리 오류: 'RPPG' object has no attribute 'last_advanced_update'
+2025-08-16 18:08:29 [ERROR] AdvancedRPPG-rppg_camera_001: ❌ 캡처 처리 오류: 'RPPG' object has no attribute 'last_advanced_update'
+2025-08-16 18:08:30 [ERROR] AdvancedRPPG-rppg_camera_001: ❌ 캡처 처리 오류: 'RPPG' object has no attribute 'last_advanced_update'
+2025-08-16 18:08:36 [INFO] PipelineManager: ⚪ kafka_broker: stopped
+2025-08-16 18:08:36 [INFO] PipelineManager: 🔴 thermal_rppg_camera: error [오류: 1]
+2025-08-16 18:08:36 [INFO] PipelineManager: 🟢 ai_camera_producer: running (40s)
+2025-08-16 18:08:36 [INFO] PipelineManager: 🟢 biometric_therapy: running (36s)
+2025-08-16 18:08:36 [INFO] PipelineManager: 🟢 pico_color_bridge: running (34s) [오류: 2]
+2025-08-16 18:08:36 [INFO] PipelineManager: 🔴 tts_stt_system: error [오류: 1]
+2025-08-16 18:08:36 [INFO] PipelineManager: 🟢 uart_processor: running (42s)
+2025-08-16 18:08:36 [INFO] PipelineManager: 🟢 event_processor: running (32s)
+2025-08-16 18:08:36 [INFO] PipelineManager: 🔴 display_manager: error [오류: 1]
+2025-08-16 18:09:06 [WARNING] PipelineManager: ⚠️ 서비스 pico_color_bridge 헬스체크 실패
+2025-08-16 18:09:06 [ERROR] PipelineManager: 🔄 서비스 pico_color_bridge 자동 재시작
+2025-08-16 18:09:06 [INFO] PipelineManager: 서비스 재시작: pico_color_bridge
+2025-08-16 18:09:06 [INFO] PipelineManager: 서비스 중지: pico_color_bridge
+2025-08-16 18:09:06 [INFO] PipelineManager: ✅ 서비스 중지 완료: pico_color_bridge
+2025-08-16 18:09:08 [INFO] PipelineManager: 서비스 시작: pico_color_bridge
+2025-08-16 18:09:08 [WARNING] PipelineManager: ⚠️ pico_color_bridge 비활성화 (모듈 미설치)
+2025-08-16 18:09:08 [INFO] PipelineManager: ✅ 서비스 시작 완료: pico_color_bridge
+2025-08-16 18:09:08 [INFO] PipelineManager: ⚪ kafka_broker: stopped
+2025-08-16 18:09:08 [INFO] PipelineManager: 🔴 thermal_rppg_camera: error [오류: 1]
+2025-08-16 18:09:08 [INFO] PipelineManager: 🟢 ai_camera_producer: running (72s)
+2025-08-16 18:09:08 [INFO] PipelineManager: 🟢 biometric_therapy: running (68s)
+2025-08-16 18:09:08 [INFO] PipelineManager: 🟢 pico_color_bridge: running (0s)
+2025-08-16 18:09:08 [INFO] PipelineManager: 🔴 tts_stt_system: error [오류: 1]
+2025-08-16 18:09:08 [INFO] PipelineManager: 🟢 uart_processor: running (74s)
+2025-08-16 18:09:08 [INFO] PipelineManager: 🟢 event_processor: running (64s)
+2025-08-16 18:09:08 [INFO] PipelineManager: 🔴 display_manager: error [오류: 1]
+
+
+
+
 
 
