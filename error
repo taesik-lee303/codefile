@@ -735,4 +735,8 @@ TypeError: Object of type EventPriority is not JSON serializable
 2025-08-16 18:20:11 [INFO] PipelineManager: 서비스 시작: display_manager
 2025-08-16 18:20:11 [ERROR] PipelineManager: ❌ 서비스 display_manager 시작 오류: cannot access local variable 'os' where it is not associated with a value
 2025-08-16 18:20:11 [ERROR] PipelineManager: 필수 서비스 display_manager 시작 실패
+--------------------------
+WARNING: Error parsing dependencies of send2trash: Expected matching RIGHT_PARENTHESIS for LEFT_PARENTHESIS, after version specifier
+    sys-platform (=="darwin") ; extra == 'objc'
+                 ~^
 
